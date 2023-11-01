@@ -1,0 +1,35 @@
+<!-- Alerts.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Alerts</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<h1>Alerts</h1>
+<div>
+    <a href="{{ url_for('index') }}" class="btn">Go Back</a>
+</div>
+<table>
+    <tr>
+        <th>Timestamp</th>
+        <th>Temperature</th>
+        <th>Humidity</th>
+    </tr>
+    {% if data %}
+        {% for entry in data %}
+            <tr>
+                <td>{{ entry.timestamp }}</td>
+                <td>{{ entry.temperature }}</td>
+                <td>{{ entry.humidity }}</td>
+            </tr>
+        {% endfor %}
+    {% else %}
+        <tr>
+            <td colspan="3">No matching records found</td>
+        </tr>
+    {% endif %}
+</table>
+</body>
+</html>
